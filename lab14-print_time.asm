@@ -1,6 +1,10 @@
 assume cs:code
 code segment
 start:  
+        ; mov cx,2
+dynamic:
+        ; push cx
+
         mov bx,0
 printyear:
         push bx
@@ -156,6 +160,9 @@ printsec:
         ; 一行占160字节，字符一个存两个字节（高属性低数据）
         mov byte ptr es:[160*12+40*2+bx],ah
         mov byte ptr es:[160*12+40*2+bx+2],al
+
+        
+        jmp near ptr dynamic
 
         mov ax,4c00h
         int 21h
