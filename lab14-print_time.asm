@@ -1,9 +1,20 @@
 assume cs:code
 code segment
 start:  
-        ; mov cx,2
+        mov cx,2000
+        mov bx,0
+clear:  ;清屏
+        ;屏幕彩色显示段
+        mov ax,0b800h
+        mov es,ax
+        mov al,' '
+        mov ah,111b ;黑底白字属性
+        mov word ptr es:[bx],ax
+        
+        add bx,2
+        loop clear
+;不断打印新的时间
 dynamic:
-        ; push cx
 
         mov bx,0
 printyear:
